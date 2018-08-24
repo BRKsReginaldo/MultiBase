@@ -1,26 +1,34 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <v-app>
+        <v-toolbar
+            app
+            color="teal"
+            dark
+        >
+            <v-toolbar-title v-text="title"/>
+        </v-toolbar>
+        <v-content>
+            <base-converter/>
+        </v-content>
+        <v-footer class="pa-3">
+            <v-spacer/>
+            <div>&copy; {{ new Date().getFullYear() }} - Reginaldo</div>
+        </v-footer>
+    </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+  import BaseConverter from './components/BaseConverter'
 
-export default {
-  name: 'app',
-  components: {
-    HelloWorld
+  export default {
+    name: 'App',
+    components: {
+      BaseConverter
+    },
+    data() {
+      return {
+        title: 'Multi Base | Fatec'
+      }
+    }
   }
-}
 </script>
-<style lang="stylus">
-#app
-  font-family 'Avenir', Helvetica, Arial, sans-serif
-  -webkit-font-smoothing antialiased
-  -moz-osx-font-smoothing grayscale
-  text-align center
-  color #2c3e50
-  margin-top 60px
-</style>
