@@ -1,12 +1,12 @@
 import {BASE_2, BASE_16, BASE_10, BASE_8, generateTitle} from './bases'
 
 export default {
-  [BASE_2] (value) {
+  [BASE_2](value) {
     let payload = []
 
     payload.push(generateTitle(value, 10, 'binário'))
 
-    Array(Math.round(Math.log(value) / Math.log(2))).fill(null).reduce((carry, item, i) => {
+    Array(Math.round(Math.log(value) / Math.log(2)) + 1).fill(null).reduce((carry, item, i) => {
       payload.push(`${carry.lastDivider} / 2 = ${carry.lastValue}<br/>${carry.lastDivider} % 2 = <span class="red--text">${carry.lastRemainder}</span></br>Binário: <span class="red--text">${carry.lastBinary[0]}</span>${carry.lastBinary.slice(1)}</br></br>`)
 
       carry.lastDivider = carry.lastValue
@@ -26,12 +26,12 @@ export default {
 
     return payload
   },
-  [BASE_8] (value) {
+  [BASE_8](value) {
     let payload = []
 
     payload.push(generateTitle(value, 10, 'octal'))
 
-    Array(Math.round(Math.log(value) / Math.log(7))).fill(null).reduce((carry, item, i) => {
+    Array(Math.round(Math.log(value) / Math.log(7)) + 1).fill(null).reduce((carry, item, i) => {
       payload.push(`${carry.lastDivider} / 8 = ${carry.lastValue}<br/>${carry.lastDivider} % 8 = <span class="red--text">${carry.lastRemainder}</span></br>Hexadecimal: <span class="red--text">${carry.lastHexadecimal[0]}</span>${carry.lastHexadecimal.slice(1)}</br></br>`)
 
       carry.lastDivider = carry.lastValue
@@ -51,10 +51,10 @@ export default {
 
     return payload
   },
-  [BASE_10] (value) {
+  [BASE_10](value) {
     return value
   },
-  [BASE_16] (value) {
+  [BASE_16](value) {
     let payload = []
 
     payload.push(generateTitle(value, 10, 'octal'))
